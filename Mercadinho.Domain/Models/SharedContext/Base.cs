@@ -1,8 +1,9 @@
+using Mercadinho.Domain.Repositories;
 using System;
 
 namespace Mercearia.Models.SharedContext
 {
-    public abstract class Base
+    public abstract class Base : IEntidade
     {
         public Base()
         {

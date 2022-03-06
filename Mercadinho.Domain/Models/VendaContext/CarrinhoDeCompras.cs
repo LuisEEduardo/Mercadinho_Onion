@@ -6,63 +6,66 @@ namespace Mercearia.Models.VendaContext
 {
     public class CarrinhoDeCompras : Base
     {
+        private IList<ItemCarrinho> _itens;
+
         private CarrinhoDeCompras()
         {
-            Itens = new List<ItemCarrinho>();
+            _itens = new List<ItemCarrinho>();
         }
 
-        public CarrinhoDeCompras CriarCarrinhoDeCompras()
+        public static CarrinhoDeCompras CriarCarrinhoDeCompras()
         {
             var carrinhoDeCompras = new CarrinhoDeCompras();
             return carrinhoDeCompras;
         }
-
-        public IList<ItemCarrinho> Itens { get; private set; }
-        public double ValorTotalCarrinho { get; set; }
+        
+        public IReadOnlyCollection<ItemCarrinho> Itens { get { return _itens.ToArray(); } }
+        public double ValorTotalCarrinho { get; private set; }
 
         public double CalcularValorDoCarrinho()
-        {        
-            double valorTotal = 0; 
-            foreach (var item in Itens)
-                valorTotal += item.ValorTotalItem(); 
+        {
+            double valorTotal = 0;
+            foreach (var item in _itens)
+                valorTotal += item.ValorTotalItem();
 
+            ValorTotalCarrinho = valorTotal;
             return valorTotal;
         }
 
         public void AddItens(ItemCarrinho item)
         {
-            var itemDoCarrinho = Itens.FirstOrDefault(i => i.Produto.Nome == item.Produto.Nome);
+            var itemDoCarrinho = _itens.FirstOrDefault(i => i.Produto.Nome == item.Produto.Nome);
 
             if (itemDoCarrinho is null)
-                Itens.Add(item);
+                _itens.Add(item);
             else
             {
                 itemDoCarrinho.AddQtdProduto(item.Qtd);
                 RemoveItemDaLista(item);
-                Itens.Add(itemDoCarrinho);
+                _itens.Add(itemDoCarrinho);
             }
         }
 
         public void RemoveItemDaLista(ItemCarrinho item)
         {
-            Itens.Remove(item);
+            _itens.Remove(item);
         }
 
         public void LimparCarrinho()
         {
-            Itens.Clear();
+            _itens.Clear();
         }
 
-         public void AddQtdDoItens(string nome, int qtd)
+        public void AddQtdDoItens(string nome, int qtd)
         {
-            foreach (var item in Itens.Where(item => item.Produto.Nome == nome))
-                item.AddQtdProduto(qtd); 
+            foreach (var item in _itens.Where(item => item.Produto.Nome == nome))
+                item.AddQtdProduto(qtd);
         }
 
         public void DiminuirQtdDoItem(string nome, int qtd)
         {
-            foreach (var item in Itens.Where(item => item.Produto.Nome == nome))
-                item.RemoveQtdProduto(qtd); 
+            foreach (var item in _itens.Where(item => item.Produto.Nome == nome))
+                item.RemoveQtdProduto(qtd);
         }
 
     }

@@ -25,7 +25,7 @@ namespace Mercearia.Models.VendaContext
 
         public void AlterarNome(string nome)
         {
-            if (!string.IsNullOrEmpty(nome))
+            if (!string.IsNullOrEmpty(nome) && Nome.Trim().Length >= 3)
                 Nome = nome;
         }
 

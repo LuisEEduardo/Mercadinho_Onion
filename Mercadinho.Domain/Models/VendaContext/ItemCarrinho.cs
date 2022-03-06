@@ -31,17 +31,13 @@ namespace Mercearia.Models.VendaContext
         public void AddQtdProduto(int qtd)
         {
             if (qtd > 0)
-            {
                 Qtd += qtd;
-            }
         }
 
         public void RemoveQtdProduto(int qtd)
         {
             if (qtd > 0)
-            {
                 Qtd -= qtd;
-            }
         }
     }
 }
