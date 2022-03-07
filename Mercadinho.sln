@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Domain", "Mercadinho.Domain\Mercadinho.Domain.csproj", "{470D6CB2-1910-4885-973F-3507B178E5B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mercadinho.Domain", "Mercadinho.Domain\Mercadinho.Domain.csproj", "{470D6CB2-1910-4885-973F-3507B178E5B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Data", "Mercadinho.Data\Mercadinho.Data.csproj", "{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{470D6CB2-1910-4885-973F-3507B178E5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{470D6CB2-1910-4885-973F-3507B178E5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{470D6CB2-1910-4885-973F-3507B178E5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
