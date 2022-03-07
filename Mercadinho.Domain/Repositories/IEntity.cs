@@ -2,7 +2,7 @@
 
 namespace Mercadinho.Domain.Repositories
 {
-    public interface IEntidade
+    public interface IEntity
     {
         Guid Id { get; set; }
     }

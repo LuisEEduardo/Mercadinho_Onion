@@ -3,7 +3,7 @@ using System;
 
 namespace Mercearia.Models.SharedContext
 {
-    public abstract class Base : IEntidade
+    public abstract class Base : IEntity
     {
         public Base()
         {
