@@ -5,7 +5,13 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mercadinho.Domain", "Mercadinho.Domain\Mercadinho.Domain.csproj", "{470D6CB2-1910-4885-973F-3507B178E5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Data", "Mercadinho.Data\Mercadinho.Data.csproj", "{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mercadinho.Data", "Mercadinho.Data\Mercadinho.Data.csproj", "{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Infra.Ioc", "Mercadinho.Infra.Ioc\Mercadinho.Infra.Ioc.csproj", "{DACF3567-BD1C-4E15-BF58-C38A45AB73DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Application", "Mercadinho.Application\Mercadinho.Application.csproj", "{1131210E-F662-4CF1-BAC2-37FBFD69B928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Api", "Mercadinho.Api\Mercadinho.Api.csproj", "{F2344CFE-95D7-41AD-B969-14E686903446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03D15ED7-4B53-4306-B7A2-7BBCD47D1EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACF3567-BD1C-4E15-BF58-C38A45AB73DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACF3567-BD1C-4E15-BF58-C38A45AB73DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACF3567-BD1C-4E15-BF58-C38A45AB73DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACF3567-BD1C-4E15-BF58-C38A45AB73DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1131210E-F662-4CF1-BAC2-37FBFD69B928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1131210E-F662-4CF1-BAC2-37FBFD69B928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1131210E-F662-4CF1-BAC2-37FBFD69B928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1131210E-F662-4CF1-BAC2-37FBFD69B928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2344CFE-95D7-41AD-B969-14E686903446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2344CFE-95D7-41AD-B969-14E686903446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2344CFE-95D7-41AD-B969-14E686903446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2344CFE-95D7-41AD-B969-14E686903446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
