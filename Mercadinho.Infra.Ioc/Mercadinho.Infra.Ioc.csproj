@@ -4,4 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mercadinho.Application\Mercadinho.Application.csproj" />
+    <ProjectReference Include="..\Mercadinho.Data\Mercadinho.Data.csproj" />
+    <ProjectReference Include="..\Mercadinho.Domain\Mercadinho.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

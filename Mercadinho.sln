@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Application", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Api", "Mercadinho.Api\Mercadinho.Api.csproj", "{F2344CFE-95D7-41AD-B969-14E686903446}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercadinho.Tests", "Mercadinho.Tests\Mercadinho.Tests.csproj", "{9D4F6D92-175E-4928-8662-B68C90EB5FE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F2344CFE-95D7-41AD-B969-14E686903446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2344CFE-95D7-41AD-B969-14E686903446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2344CFE-95D7-41AD-B969-14E686903446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4F6D92-175E-4928-8662-B68C90EB5FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4F6D92-175E-4928-8662-B68C90EB5FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4F6D92-175E-4928-8662-B68C90EB5FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4F6D92-175E-4928-8662-B68C90EB5FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,4 +8,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mercadinho.Application\Mercadinho.Application.csproj" />
+    <ProjectReference Include="..\Mercadinho.Infra.Ioc\Mercadinho.Infra.Ioc.csproj" />
+  </ItemGroup>
+
 </Project>
