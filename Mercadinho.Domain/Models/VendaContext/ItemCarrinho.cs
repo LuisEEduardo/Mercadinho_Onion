@@ -3,17 +3,12 @@ using Mercearia.Models.SharedContext;
 namespace Mercearia.Models.VendaContext
 {
     public class ItemCarrinho : Base
-    {
-        private ItemCarrinho(Produto produto, int qtd)
-            : base()
-        {
-            Produto = produto;
-            Qtd = qtd;
-        }
-
+    {        
         public ItemCarrinho CriarCarrinho(Produto produto, int qtd)
         {
-            var itemCarrinho = new ItemCarrinho(produto, qtd);
+            var itemCarrinho = new ItemCarrinho();
+            Produto = produto;
+            Qtd = qtd;
             return itemCarrinho;
         }
 
