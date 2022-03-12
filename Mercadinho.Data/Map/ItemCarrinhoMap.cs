@@ -1,7 +1,6 @@
 ﻿using Mercearia.Models.VendaContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace Mercadinho.Data.Map
 {

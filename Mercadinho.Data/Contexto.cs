@@ -10,7 +10,7 @@ namespace Mercadinho.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=MIR-0553\SQLEXPRESS;Database=Mercadinho;Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=Mercadinho;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;");
             base.OnConfiguring(optionsBuilder);
         }
 

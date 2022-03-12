@@ -19,7 +19,7 @@ namespace Mercadinho.Data.Map
 
             builder
                 .Property(x => x.Nome)
-                .HasColumnType("VACHAR(100)")
+                .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 
             builder
