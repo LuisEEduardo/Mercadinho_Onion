@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mercadinho.Application\Mercadinho.Application.csproj" />
+    <ProjectReference Include="..\Mercadinho.Domain\Mercadinho.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
