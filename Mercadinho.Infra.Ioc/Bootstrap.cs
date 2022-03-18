@@ -21,7 +21,7 @@ namespace Mercadinho.Infra.Ioc
             services.AddScoped<IProdutoAplicacao, ProdutoAplicacao>();
 
             services.AddDbContext<Contexto>(options => 
-                options.UseSqlServer(configuration.GetConnectionString(""))    
+                options.UseSqlServer(configuration.GetConnectionString("Conexao"))    
             );
         }
     }

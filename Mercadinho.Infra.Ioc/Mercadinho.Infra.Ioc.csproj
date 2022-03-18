@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Mercadinho.Application\Mercadinho.Application.csproj" />
     <ProjectReference Include="..\Mercadinho.Data\Mercadinho.Data.csproj" />
     <ProjectReference Include="..\Mercadinho.Domain\Mercadinho.Domain.csproj" />

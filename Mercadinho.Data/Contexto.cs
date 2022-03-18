@@ -6,13 +6,12 @@ namespace Mercadinho.Data
 {
     public class Contexto : DbContext
     {
-        DbSet<Produto> Produtos { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public Contexto(DbContextOptions<Contexto> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=Mercadinho;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;");
-            base.OnConfiguring(optionsBuilder);
         }
+
+        DbSet<Produto> Produtos { get; set; }      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
 using Mercadinho.Application.Mapper;
+using Mercadinho.Infra.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,9 +21,8 @@ namespace Mercadinho.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            // services.RegistroDeServicos(services, Configuration);
-            // services.AddAutoMapper(typeof(AutoMapperConfig));
+            Bootstrap.RegistroDeServicos(services, Configuration);
+            services.AddAutoMapper(typeof(AutoMapperConfig));
 
             services.AddControllers();
 
