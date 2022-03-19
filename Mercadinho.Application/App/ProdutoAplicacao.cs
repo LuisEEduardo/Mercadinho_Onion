@@ -3,6 +3,7 @@ using Mercadinho.Application.Interface;
 using Mercadinho.Application.ViewModel;
 using Mercadinho.Domain.Repositories;
 using Mercearia.Models.VendaContext;
+using System;
 using System.Collections.Generic;
 
 namespace Mercadinho.Application.App
@@ -19,9 +20,27 @@ namespace Mercadinho.Application.App
             _mapper = mapper;
         }
 
+        public void Atualizar(ProdutoViewModel entidade)
+        {
+            _produtoRepositorio.Atualizar(_mapper.Map<Produto>(entidade));
+        }
+
+        public void Excluir(Guid id)
+        {
+            _produtoRepositorio.Excluir(id);
+        }
+
+        public ProdutoViewModel GetByName(string nome)
+            => _mapper.Map<ProdutoViewModel>(_produtoRepositorio.GetByName(nome));
+
         public void Incluir(ProdutoViewModel entidade)
         {
             _produtoRepositorio.Criar(_mapper.Map<Produto>(entidade));
+        }
+
+        public ProdutoViewModel SelecionarPorId(Guid id)
+        {
+            return _mapper.Map<ProdutoViewModel>(_produtoRepositorio.SelecionarPorId(id));
         }
 
         public IEnumerable<ProdutoViewModel> SelecionarTodos()

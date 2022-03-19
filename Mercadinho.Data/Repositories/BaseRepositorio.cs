@@ -8,7 +8,7 @@ namespace Mercadinho.Data.Repositories
     public class BaseRepositorio<T> : IBaseRespositorio<T> where T : class, IEntity
     {
 
-        private readonly Contexto _contexto;
+        protected readonly Contexto _contexto;
         public BaseRepositorio(Contexto contexto)
             => _contexto = contexto;
 
