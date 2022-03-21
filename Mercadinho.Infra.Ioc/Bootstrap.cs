@@ -16,9 +16,11 @@ namespace Mercadinho.Infra.Ioc
             // Repositorios
             services.AddScoped(typeof(IBaseRespositorio<>), typeof(BaseRepositorio<>));
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IItemCarrinhoRepositorio, ItemCarrinhoRepositorio>();
 
             // Aplicação 
             services.AddScoped<IProdutoAplicacao, ProdutoAplicacao>();
+            services.AddScoped<IItemCarrinhoAplicacao, ItemCarrinhoAplicacao>();
 
             services.AddDbContext<Contexto>(options => 
                 options.UseSqlServer(configuration.GetConnectionString("Conexao"))    

@@ -4,6 +4,6 @@ namespace Mercadinho.Domain.Repositories
 {
     public interface IProdutoRepositorio : IBaseRespositorio<Produto>
     {
-        Produto GetByName(string nome);
+        Produto SelecionarPorNome(string nome);
     }
 }

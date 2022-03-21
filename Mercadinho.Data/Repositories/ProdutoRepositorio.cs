@@ -10,7 +10,10 @@ namespace Mercadinho.Data.Repositories
         {
         }
 
-        public Produto GetByName(string nome)
-            => _contexto.Set<Produto>().FirstOrDefault(x => x.Nome == nome);
+        public Produto SelecionarPorNome(string nome)
+            => _contexto.Set<Produto>()
+                .Where(x => x.Nome == nome)
+                .FirstOrDefault();
+
     }
 }

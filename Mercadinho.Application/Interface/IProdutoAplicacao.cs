@@ -9,7 +9,7 @@ namespace Mercadinho.Application.Interface
         void Incluir(ProdutoViewModel entidade);
         IEnumerable<ProdutoViewModel> SelecionarTodos();
         ProdutoViewModel SelecionarPorId(Guid id);
-        ProdutoViewModel GetByName(string nome);
+        ProdutoViewModel SelecionarPorNome(string nome);
         void Excluir(Guid id);
         void Atualizar(ProdutoViewModel entidade);  
     }

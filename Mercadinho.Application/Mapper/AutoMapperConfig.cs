@@ -14,6 +14,7 @@ namespace Mercadinho.Application.Mapper
         public AutoMapperConfig()
         {
             CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+            CreateMap<ItemCarrinho, ItemCarrinhoViewModel>().ReverseMap();
         }
     }
 }

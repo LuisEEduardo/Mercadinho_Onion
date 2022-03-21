@@ -55,5 +55,13 @@ namespace Mercadinho.Api.Controllers
             return Ok("Produto atualizado");
         }
 
+        //[HttpGet]
+        //[Route("produtoEspecifico/{nome}")]
+        //public IActionResult GetByName([FromRoute] string nome)
+        //{
+        //    var produto = _app.SelecionarPorNome(nome);
+        //    return Ok(produto);
+        //}
+
     }
 }

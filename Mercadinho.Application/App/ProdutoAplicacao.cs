@@ -30,8 +30,8 @@ namespace Mercadinho.Application.App
             _produtoRepositorio.Excluir(id);
         }
 
-        public ProdutoViewModel GetByName(string nome)
-            => _mapper.Map<ProdutoViewModel>(_produtoRepositorio.GetByName(nome));
+        public ProdutoViewModel SelecionarPorNome(string nome)
+            => _mapper.Map<ProdutoViewModel>(_produtoRepositorio.SelecionarPorNome(nome));
 
         public void Incluir(ProdutoViewModel entidade)
         {
