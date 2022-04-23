@@ -8,8 +8,8 @@ namespace Mercadinho.Application.Interface
     {
         void Incluir(ItemCarrinhoViewModel entidade);
         IEnumerable<ItemCarrinhoViewModel> SelecionarTodos();
-        ItemCarrinhoViewModel SelecionarPorId(Guid id);
-        void Excluir(Guid id);
+        ItemCarrinhoViewModel SelecionarPorId(int id);
+        void Excluir(int id);
         void Atualizar(ItemCarrinhoViewModel entidade);
     }
 }

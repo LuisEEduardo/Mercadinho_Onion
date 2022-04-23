@@ -25,7 +25,7 @@ namespace Mercadinho.Application.App
             _produtoRepositorio.Atualizar(_mapper.Map<Produto>(entidade));
         }
 
-        public void Excluir(Guid id)
+        public void Excluir(int id)
         {
             _produtoRepositorio.Excluir(id);
         }
@@ -38,7 +38,7 @@ namespace Mercadinho.Application.App
             _produtoRepositorio.Criar(_mapper.Map<Produto>(entidade));
         }
 
-        public ProdutoViewModel SelecionarPorId(Guid id)
+        public ProdutoViewModel SelecionarPorId(int id)
         {
             return _mapper.Map<ProdutoViewModel>(_produtoRepositorio.SelecionarPorId(id));
         }

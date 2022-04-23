@@ -21,12 +21,12 @@ namespace Mercadinho.Application.App
 
         public void Atualizar(ItemCarrinhoViewModel entidade)
         {
-            throw new NotImplementedException();
+            _itemCarrinhoRepositorio.Atualizar(_mapper.Map<ItemCarrinho>(entidade));
         }
 
-        public void Excluir(Guid id)
+        public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            _itemCarrinhoRepositorio.Excluir(id);
         }
 
         public void Incluir(ItemCarrinhoViewModel entidade)
@@ -34,14 +34,14 @@ namespace Mercadinho.Application.App
             _itemCarrinhoRepositorio.Criar(_mapper.Map<ItemCarrinho>(entidade));
         }
 
-        public ItemCarrinhoViewModel SelecionarPorId(Guid id)
+        public ItemCarrinhoViewModel SelecionarPorId(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ItemCarrinhoViewModel>(_itemCarrinhoRepositorio.SelecionarPorId(id));
         }
 
         public IEnumerable<ItemCarrinhoViewModel> SelecionarTodos()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<ItemCarrinhoViewModel>>(_itemCarrinhoRepositorio.SelecionarTodos());
         }
     }
 }
