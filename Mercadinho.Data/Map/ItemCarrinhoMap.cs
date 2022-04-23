@@ -14,7 +14,8 @@ namespace Mercadinho.Data.Map
 
             builder
                 .Property(x => x.Id)
-                .HasColumnType("UNIQUEIDENTIFIER")
+                .HasColumnType("INT")
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
             builder
@@ -27,7 +28,6 @@ namespace Mercadinho.Data.Map
                 .WithMany(x => x.ItensCarrinho)
                 .HasForeignKey(x => x.ProdutoId)
                 .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }

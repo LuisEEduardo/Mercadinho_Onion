@@ -24,13 +24,13 @@ namespace Mercadinho.Data.Repositories
             _contexto.SaveChanges();
         }
 
-        public T SelecionarPorId(Guid id)
+        public T SelecionarPorId(int id)
             => _contexto.Set<T>().FirstOrDefault(x => x.Id == id);
 
         public IEnumerable<T> SelecionarTodos()
             => _contexto.Set<T>().ToList();
 
-        public void Excluir(Guid id)
+        public void Excluir(int id)
         {
             var entidade = SelecionarPorId(id);
             _contexto.Set<T>().Remove(entidade);

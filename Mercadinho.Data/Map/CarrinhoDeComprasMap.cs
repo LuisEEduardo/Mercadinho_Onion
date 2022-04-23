@@ -14,7 +14,8 @@ namespace Mercadinho.Data.Map
 
             builder
                 .Property(x => x.Id)
-                .HasColumnType("UNIQUEIDENTIFIER")
+                .HasColumnType("INT")
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
             builder
