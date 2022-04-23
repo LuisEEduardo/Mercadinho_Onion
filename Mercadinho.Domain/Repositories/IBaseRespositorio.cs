@@ -7,9 +7,9 @@ namespace Mercadinho.Domain.Repositories
     public interface IBaseRespositorio<T> : IDisposable where T : class, IEntity
     {
         void Criar(T entidade);
-        T SelecionarPorId(Guid id);
+        T SelecionarPorId(int id);
         IEnumerable<T> SelecionarTodos();
         void Atualizar(T entidade);
-        void Excluir(Guid id);
+        void Excluir(int id);
     }
 }

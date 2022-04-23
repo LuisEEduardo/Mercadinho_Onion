@@ -7,9 +7,9 @@ namespace Mercearia.Models.SharedContext
     {
         public Base()
         {
-            Id = Guid.NewGuid();
+            
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }
