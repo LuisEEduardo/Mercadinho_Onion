@@ -1,7 +1,6 @@
 ﻿using Mercadinho.Application.Interface;
 using Mercadinho.Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace Mercadinho.Api.Controllers
 {
@@ -25,7 +24,7 @@ namespace Mercadinho.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public IActionResult GetById([FromRoute] int id)
         {
             var produto = _app.SelecionarPorId(id);
             return Ok(produto);
@@ -41,7 +40,7 @@ namespace Mercadinho.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public IActionResult Delete([FromRoute] int id)
         {
             _app.Excluir(id);
             return Ok("Produto excluído");

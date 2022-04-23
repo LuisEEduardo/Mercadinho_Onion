@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mercadinho.Api.Controllers
 {
-    [Route("v1/item-carrinho")]
+    [Route("v1/carrinhoDeCompras")]
     [ApiController]
-    public class ItemCarrinhoController : ControllerBase
+    public class CarrinhoDeComprasController : ControllerBase
     {
-        private readonly IItemCarrinhoAplicacao _app;        
 
-        public ItemCarrinhoController(IItemCarrinhoAplicacao app)
+        private readonly ICarrinhoDeComprasAplicacao _app;
+
+        public CarrinhoDeComprasController(ICarrinhoDeComprasAplicacao app)
         {
             _app = app;
         }
@@ -26,17 +27,16 @@ namespace Mercadinho.Api.Controllers
         [Route("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            var itemCarrinho = _app.SelecionarPorId(id);
-            return Ok(itemCarrinho);
+            var carrinho = _app.SelecionarPorId(id);
+            return Ok(carrinho);
         }
-
 
         [HttpPost]
         [Route("")]
-        public IActionResult Post([FromForm] ItemCarrinhoViewModel itemCarrinho)
-        {            
-            _app.Incluir(itemCarrinho);
-            return Ok(itemCarrinho);
+        public IActionResult Post([FromBody] CarrinhoDeComprasViewModel carrinho)
+        {
+            _app.Incluir(carrinho);
+            return Ok("Carrinho incluído");
         }
 
         [HttpDelete]
@@ -44,15 +44,16 @@ namespace Mercadinho.Api.Controllers
         public IActionResult Delete([FromRoute] int id)
         {
             _app.Excluir(id);
-            return Ok("Item retirado do carrinho");
+            return Ok("Carrinho excluído");
         }
 
         [HttpPut]
         [Route("")]
-        public IActionResult Put([FromBody] ItemCarrinhoViewModel itemCarrinho)
+        public IActionResult Put([FromBody] CarrinhoDeComprasViewModel carrinho)
         {
-            _app.Atualizar(itemCarrinho);
-            return Ok("Item atualizado");
+            _app.Atualizar(carrinho);
+            return Ok("Carrinho atualizado");
         }
+
     }
 }

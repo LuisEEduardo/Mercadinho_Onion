@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mercadinho.Api.Controllers
 {
-    [Route("v1/item-carrinho")]
+    [Route("v1/caixa")]
     [ApiController]
-    public class ItemCarrinhoController : ControllerBase
+    public class CaixaController : ControllerBase
     {
-        private readonly IItemCarrinhoAplicacao _app;        
+        private readonly ICaixaAplicacao _app;
 
-        public ItemCarrinhoController(IItemCarrinhoAplicacao app)
+        public CaixaController(ICaixaAplicacao app)
         {
             _app = app;
         }
@@ -26,17 +26,16 @@ namespace Mercadinho.Api.Controllers
         [Route("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            var itemCarrinho = _app.SelecionarPorId(id);
-            return Ok(itemCarrinho);
+            var caixa = _app.SelecionarPorId(id);
+            return Ok(caixa);
         }
-
 
         [HttpPost]
         [Route("")]
-        public IActionResult Post([FromForm] ItemCarrinhoViewModel itemCarrinho)
-        {            
-            _app.Incluir(itemCarrinho);
-            return Ok(itemCarrinho);
+        public IActionResult Post([FromBody] CaixaViewModel caixa)
+        {
+            _app.Incluir(caixa);
+            return Ok("Caixa incluído");
         }
 
         [HttpDelete]
@@ -44,15 +43,16 @@ namespace Mercadinho.Api.Controllers
         public IActionResult Delete([FromRoute] int id)
         {
             _app.Excluir(id);
-            return Ok("Item retirado do carrinho");
+            return Ok("Produto excluído");
         }
 
         [HttpPut]
         [Route("")]
-        public IActionResult Put([FromBody] ItemCarrinhoViewModel itemCarrinho)
+        public IActionResult Put([FromBody] CaixaViewModel caixa)
         {
-            _app.Atualizar(itemCarrinho);
-            return Ok("Item atualizado");
+            _app.Atualizar(caixa);
+            return Ok("Caixa atualizado");
         }
+
     }
 }
