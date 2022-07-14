@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Mercadinho.Domain.Models.VendaContext;
+using Mercadinho.Domain.Models.VendaContext.Enums;
 using Mercearia.Models.SharedContext;
 
 namespace Mercearia.Models.VendaContext
@@ -15,12 +17,18 @@ namespace Mercearia.Models.VendaContext
 
         public static CarrinhoDeCompras CriarCarrinhoDeCompras()
         {
-            var carrinhoDeCompras = new CarrinhoDeCompras();
+            var carrinhoDeCompras = new CarrinhoDeCompras
+            {
+                StatusDaCompra = EStatusCompra.EmAndamento
+            };
+
             return carrinhoDeCompras;
         }
-        
+
         public IReadOnlyCollection<ItemCarrinho> Itens { get { return _itens.ToArray(); } }
         public double ValorTotalCarrinho { get; private set; }
+        public EStatusCompra StatusDaCompra { get; set; }
+        public Pedido Pedido { get; private set; }
 
         public double CalcularValorDoCarrinho()
         {
@@ -66,6 +74,16 @@ namespace Mercearia.Models.VendaContext
         {
             foreach (var item in _itens.Where(item => item.Produto.Nome == nome))
                 item.RemoveQtdProduto(qtd);
+        }
+
+        public void FinalizarCompra()
+        {
+            StatusDaCompra = EStatusCompra.Finalizada;
+        }
+
+        public void CancelarCompra()
+        {
+            StatusDaCompra = EStatusCompra.Cancelada;
         }
 
     }

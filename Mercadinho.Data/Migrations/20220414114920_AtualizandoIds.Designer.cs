@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mercadinho.Data.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220312220427_CriandoBanco")]
-    partial class CriandoBanco
+    [Migration("20220414114920_AtualizandoIds")]
+    partial class AtualizandoIds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,55 +21,72 @@ namespace Mercadinho.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
+            modelBuilder.Entity("Mercearia.Models.VendaContext.Caixa", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("INT")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("ValorTotalCarrinho")
-                        .HasColumnType("float");
+                    b.Property<bool>("CompraRealizada")
+                        .HasColumnType("Bit");
 
                     b.HasKey("Id");
+
+                    b.ToTable("Caixa");
+                });
+
+            modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INT")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CaixaId")
+                        .HasColumnType("INT");
+
+                    b.Property<decimal>("ValorTotalCarrinho")
+                        .HasColumnType("Decimal(38,17)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaixaId");
 
                     b.ToTable("CarrinhoDeCompras");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.ItemCarrinho", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("INT")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CarrinhoDeComprasId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("CarrinhoDeComprasId1")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("INT");
 
                     b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("ProdutoId1")
-                        .HasColumnType("UNIQUEIDENTIFIER");
+                        .HasColumnType("INT");
 
                     b.Property<int>("Qtd")
-                        .HasColumnType("int");
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarrinhoDeComprasId1");
+                    b.HasIndex("CarrinhoDeComprasId");
 
-                    b.HasIndex("ProdutoId1");
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("ItemCarrinho");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.Produto", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("UNIQUEIDENTIFIER");
+                        .HasColumnType("INT")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -87,19 +104,35 @@ namespace Mercadinho.Data.Migrations
                     b.ToTable("Produto");
                 });
 
+            modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
+                {
+                    b.HasOne("Mercearia.Models.VendaContext.Caixa", null)
+                        .WithMany("CarrinhosDeCompras")
+                        .HasForeignKey("CaixaId");
+                });
+
             modelBuilder.Entity("Mercearia.Models.VendaContext.ItemCarrinho", b =>
                 {
                     b.HasOne("Mercearia.Models.VendaContext.CarrinhoDeCompras", "CarrinhoDeCompras")
                         .WithMany("Itens")
-                        .HasForeignKey("CarrinhoDeComprasId1");
+                        .HasForeignKey("CarrinhoDeComprasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Mercearia.Models.VendaContext.Produto", "Produto")
                         .WithMany("ItensCarrinho")
-                        .HasForeignKey("ProdutoId1");
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CarrinhoDeCompras");
 
                     b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("Mercearia.Models.VendaContext.Caixa", b =>
+                {
+                    b.Navigation("CarrinhosDeCompras");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>

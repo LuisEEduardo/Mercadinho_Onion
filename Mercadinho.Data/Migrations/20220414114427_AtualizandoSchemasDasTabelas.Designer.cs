@@ -4,14 +4,16 @@ using Mercadinho.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Mercadinho.Data.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20220414114427_AtualizandoSchemasDasTabelas")]
+    partial class AtualizandoSchemasDasTabelas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,34 +21,19 @@ namespace Mercadinho.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Mercadinho.Domain.Models.VendaContext.Pedido", b =>
+            modelBuilder.Entity("Mercearia.Models.VendaContext.Caixa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INT")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CarrinhoId")
-                        .HasColumnType("INT");
-
-                    b.Property<DateTime>("DataDaCompra")
-                        .HasColumnType("DateTime");
-
-                    b.Property<int>("FormaPagamento")
-                        .HasColumnType("INT");
-
-                    b.Property<bool>("PagamentoConfirmado")
-                        .HasColumnType("BIT");
-
-                    b.Property<decimal>("ValorTotal")
-                        .HasColumnType("Decimal");
+                    b.Property<bool>("CompraRealizada")
+                        .HasColumnType("Bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarrinhoId")
-                        .IsUnique();
-
-                    b.ToTable("Pedido");
+                    b.ToTable("Caixa");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
@@ -56,13 +43,15 @@ namespace Mercadinho.Data.Migrations
                         .HasColumnType("INT")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("StatusDaCompra")
+                    b.Property<int?>("CaixaId")
                         .HasColumnType("INT");
 
                     b.Property<decimal>("ValorTotalCarrinho")
                         .HasColumnType("Decimal(38,17)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CaixaId");
 
                     b.ToTable("CarrinhoDeCompras");
                 });
@@ -115,15 +104,11 @@ namespace Mercadinho.Data.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("Mercadinho.Domain.Models.VendaContext.Pedido", b =>
+            modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
                 {
-                    b.HasOne("Mercearia.Models.VendaContext.CarrinhoDeCompras", "CarrinhoDeCompras")
-                        .WithOne("Pedido")
-                        .HasForeignKey("Mercadinho.Domain.Models.VendaContext.Pedido", "CarrinhoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CarrinhoDeCompras");
+                    b.HasOne("Mercearia.Models.VendaContext.Caixa", null)
+                        .WithMany("CarrinhosDeCompras")
+                        .HasForeignKey("CaixaId");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.ItemCarrinho", b =>
@@ -145,11 +130,14 @@ namespace Mercadinho.Data.Migrations
                     b.Navigation("Produto");
                 });
 
+            modelBuilder.Entity("Mercearia.Models.VendaContext.Caixa", b =>
+                {
+                    b.Navigation("CarrinhosDeCompras");
+                });
+
             modelBuilder.Entity("Mercearia.Models.VendaContext.CarrinhoDeCompras", b =>
                 {
                     b.Navigation("Itens");
-
-                    b.Navigation("Pedido");
                 });
 
             modelBuilder.Entity("Mercearia.Models.VendaContext.Produto", b =>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Mercadinho.Application.ViewModel;
+using Mercadinho.Domain.Models.VendaContext;
 using Mercearia.Models.VendaContext;
 
 namespace Mercadinho.Application.Mapper
@@ -16,7 +17,7 @@ namespace Mercadinho.Application.Mapper
             CreateMap<Produto, ProdutoViewModel>().ReverseMap();
             CreateMap<ItemCarrinho, ItemCarrinhoViewModel>().ReverseMap();
             CreateMap<CarrinhoDeCompras, CarrinhoDeComprasViewModel>().ReverseMap();
-            CreateMap<Caixa, CaixaViewModel>().ReverseMap();
+            CreateMap<Pedido, PedidoViewModel>().ReverseMap();
         }
     }
 }

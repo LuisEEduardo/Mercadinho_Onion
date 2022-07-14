@@ -23,6 +23,11 @@ namespace Mercadinho.Data.Map
                 .HasColumnType("Decimal");
 
             builder
+                .Property(x => x.StatusDaCompra)
+                .HasColumnType("INT")
+                .IsRequired();  
+
+            builder
                 .HasMany(x => x.Itens)
                 .WithOne(x => x.CarrinhoDeCompras)
                 .HasForeignKey(x => x.CarrinhoDeComprasId);

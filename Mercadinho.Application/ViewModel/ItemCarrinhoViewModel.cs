@@ -5,5 +5,6 @@
         public int Id { get; set; }
         public int ProdutoId { get; set; }
         public int Qtd { get; set; }
+        public int CarrinhoDeComprasId { get; set; }
     }
 }

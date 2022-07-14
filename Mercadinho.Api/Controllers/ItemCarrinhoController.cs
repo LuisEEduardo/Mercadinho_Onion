@@ -33,8 +33,14 @@ namespace Mercadinho.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult Post([FromForm] ItemCarrinhoViewModel itemCarrinho)
-        {            
+        public IActionResult Post([FromForm] int produtoId, int qtd, int carrinhoId)
+        {
+            var itemCarrinho = new ItemCarrinhoViewModel
+            {
+                ProdutoId = produtoId,
+                Qtd = qtd,
+                CarrinhoDeComprasId = carrinhoId
+            };
             _app.Incluir(itemCarrinho);
             return Ok(itemCarrinho);
         }

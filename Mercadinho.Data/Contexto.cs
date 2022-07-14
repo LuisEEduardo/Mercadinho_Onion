@@ -1,4 +1,5 @@
 ﻿using Mercadinho.Data.Map;
+using Mercadinho.Domain.Models.VendaContext;
 using Mercearia.Models.VendaContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,14 +15,14 @@ namespace Mercadinho.Data
         DbSet<Produto> Produtos { get; set; }      
         DbSet<ItemCarrinho> ItemCarrinhos { get; set; }
         DbSet<CarrinhoDeCompras> CarrinhoDeCompras { get; set; }
-        DbSet<Caixa> Caixas { get; set; }
+        DbSet<Pedido> Pedidos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProdutoMap());
             modelBuilder.ApplyConfiguration(new ItemCarrinhoMap());
             modelBuilder.ApplyConfiguration(new CarrinhoDeComprasMap());
-            modelBuilder.ApplyConfiguration(new CaixaMap());
+            modelBuilder.ApplyConfiguration(new PedidoMap());
 
             base.OnModelCreating(modelBuilder);
         }
