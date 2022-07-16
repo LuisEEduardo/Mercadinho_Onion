@@ -1,6 +1,8 @@
 ﻿using Mercadinho.Application.Interface;
 using Mercadinho.Application.ViewModel;
+using Mercadinho.Domain.Models.VendaContext.Enums;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Mercadinho.Api.Controllers
 {
@@ -32,11 +34,29 @@ namespace Mercadinho.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult Post([FromForm] PedidoViewModel pedido)
+        public IActionResult Post([FromForm] int carrinhoId, decimal valorTotal, EFormaCompra formaPagamento, bool pagamentoConfirmado)
         {
+
+            var pedido = new PedidoViewModel
+            {
+                CarrinhoId = carrinhoId,
+                DataDaCompra = DateTime.Now,
+                ValorTotal = valorTotal,
+                FormaPagamento = formaPagamento,
+                PagamentoConfirmado = pagamentoConfirmado
+            };
+
             _app.Incluir(pedido);
             return Ok(pedido);
         }
+        
+        //[HttpPost]
+        //[Route("")]
+        //public IActionResult Post([FromForm] PedidoViewModel pedido)
+        //{
+        //    _app.Incluir(pedido);
+        //    return Ok(pedido);
+        //}
 
         [HttpDelete]
         [Route("{id}")]
