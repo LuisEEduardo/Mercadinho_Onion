@@ -9,12 +9,13 @@ namespace Mercadinho.Application.App
 {
     public class CarrinhoDeComprasAplicacao : ICarrinhoDeComprasAplicacao
     {
-
+        private readonly IItemCarrinhoRepositorio _itemCarrinhoRepositorio;
         private readonly ICarrinhoDeComprasRepositorio _carrinhoDeComprasRepositorio;
         private readonly IMapper _mapper;
 
-        public CarrinhoDeComprasAplicacao(ICarrinhoDeComprasRepositorio carrinhoDeComprasRepositorio, IMapper mapper)
+        public CarrinhoDeComprasAplicacao(IItemCarrinhoRepositorio itemCarrinhoRepositorio, ICarrinhoDeComprasRepositorio carrinhoDeComprasRepositorio, IMapper mapper)
         {
+            _itemCarrinhoRepositorio = itemCarrinhoRepositorio;
             _carrinhoDeComprasRepositorio = carrinhoDeComprasRepositorio;
             _mapper = mapper;
         }
@@ -43,5 +44,32 @@ namespace Mercadinho.Application.App
         {
             return _mapper.Map<IEnumerable<CarrinhoDeComprasViewModel>>(_carrinhoDeComprasRepositorio.SelecionarTodos());
         }
+
+
+        public void AtualizarItem(ItemCarrinhoViewModel entidade)
+        {
+            _itemCarrinhoRepositorio.Atualizar(_mapper.Map<ItemCarrinho>(entidade));
+        }
+
+        public void ExcluirItem(int id)
+        {
+            _itemCarrinhoRepositorio.Excluir(id);
+        }
+
+        public void IncluirItem(ItemCarrinhoViewModel entidade)
+        {
+            _itemCarrinhoRepositorio.Criar(_mapper.Map<ItemCarrinho>(entidade));
+        }
+
+        public ItemCarrinhoViewModel SelecionarPorIdItem(int id)
+        {
+            return _mapper.Map<ItemCarrinhoViewModel>(_itemCarrinhoRepositorio.SelecionarPorId(id));
+        }
+
+        public IEnumerable<ItemCarrinhoViewModel> SelecionarTodosItens()
+        {
+            return _mapper.Map<IEnumerable<ItemCarrinhoViewModel>>(_itemCarrinhoRepositorio.SelecionarTodos());
+        }
+
     }
 }

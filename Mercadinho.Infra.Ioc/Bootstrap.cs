@@ -22,7 +22,6 @@ namespace Mercadinho.Infra.Ioc
 
             // Aplicação 
             services.AddScoped<IProdutoAplicacao, ProdutoAplicacao>();
-            services.AddScoped<IItemCarrinhoAplicacao, ItemCarrinhoAplicacao>();
             services.AddScoped<ICarrinhoDeComprasAplicacao, CarrinhoDeComprasAplicacao>();
             services.AddScoped<IPedidoAplicacao, PedidoAplicacao>();
 

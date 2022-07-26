@@ -8,6 +8,7 @@ namespace Mercadinho.Data.Repositories
         public CarrinhoDeComprasRepositorio(Contexto contexto) 
             : base(contexto)
         {
+            
         }
     }
 }

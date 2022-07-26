@@ -10,5 +10,10 @@ namespace Mercadinho.Application.Interface
         CarrinhoDeComprasViewModel SelecionarPorId(int id);
         void Excluir(int id);
         void Atualizar(CarrinhoDeComprasViewModel entidade);
+        void IncluirItem(ItemCarrinhoViewModel entidade);
+        IEnumerable<ItemCarrinhoViewModel> SelecionarTodosItens();
+        ItemCarrinhoViewModel SelecionarPorIdItem(int id);
+        void ExcluirItem(int id);
+        void AtualizarItem(ItemCarrinhoViewModel entidade);
     }
 }
