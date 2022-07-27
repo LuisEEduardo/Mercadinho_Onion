@@ -1,5 +1,7 @@
 ﻿using Mercadinho.Application.Interface;
 using Mercadinho.Application.ViewModel;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mercadinho.Api.Controllers
@@ -23,7 +25,7 @@ namespace Mercadinho.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}")]        
         public IActionResult GetById([FromRoute] int id)
         {
             var produto = _app.SelecionarPorId(id);
@@ -32,6 +34,7 @@ namespace Mercadinho.Api.Controllers
 
         [HttpPost]
         [Route("")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Post([FromBody] ProdutoViewModel produto)
         {
             _app.Incluir(produto);
@@ -40,6 +43,7 @@ namespace Mercadinho.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Delete([FromRoute] int id)
         {
             _app.Excluir(id);
@@ -48,6 +52,7 @@ namespace Mercadinho.Api.Controllers
 
         [HttpPut]
         [Route("")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Put([FromBody] ProdutoViewModel produto)
         {
             _app.Atualizar(produto);

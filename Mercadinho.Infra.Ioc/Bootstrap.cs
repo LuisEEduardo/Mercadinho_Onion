@@ -3,9 +3,11 @@ using Mercadinho.Application.Interface;
 using Mercadinho.Data;
 using Mercadinho.Data.Repositories;
 using Mercadinho.Domain.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Mercadinho.Infra.Ioc
 {
@@ -24,10 +26,18 @@ namespace Mercadinho.Infra.Ioc
             services.AddScoped<IProdutoAplicacao, ProdutoAplicacao>();
             services.AddScoped<ICarrinhoDeComprasAplicacao, CarrinhoDeComprasAplicacao>();
             services.AddScoped<IPedidoAplicacao, PedidoAplicacao>();
+            services.AddScoped<IUsuarioAplicacao, UsuarioAplicacao>();
 
+            // Connection string
             services.AddDbContext<Contexto>(options => 
                 options.UseSqlServer(configuration.GetConnectionString("Conexao"))    
             );
+
+            // Identity
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<Contexto>()
+                .AddDefaultTokenProviders();
+
         }
     }
 }

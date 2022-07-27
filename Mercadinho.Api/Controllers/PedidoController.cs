@@ -1,6 +1,8 @@
 ﻿using Mercadinho.Application.Interface;
 using Mercadinho.Application.ViewModel;
 using Mercadinho.Domain.Models.VendaContext.Enums;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -8,6 +10,7 @@ namespace Mercadinho.Api.Controllers
 {
     [Route("v1/pedido")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PedidoController : ControllerBase
     {
         private readonly IPedidoAplicacao _app;

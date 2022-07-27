@@ -1,11 +1,12 @@
 ﻿using Mercadinho.Data.Map;
 using Mercadinho.Domain.Models.VendaContext;
 using Mercearia.Models.VendaContext;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mercadinho.Data
 {
-    public class Contexto : DbContext
+    public class Contexto : IdentityDbContext
     {
         public Contexto(DbContextOptions<Contexto> options)
             : base(options)
