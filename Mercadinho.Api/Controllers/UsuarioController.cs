@@ -17,7 +17,7 @@ namespace Mercadinho.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UsuarioToken>> Login([FromBody] UsuarioViewModel usuarioVM)
+        public async Task<ActionResult<UsuarioToken>> Login([FromBody] LoginViewModel usuarioVM)
         {
             var result = await _app.Login(usuarioVM);
 
@@ -28,12 +28,12 @@ namespace Mercadinho.Api.Controllers
         }
 
         [HttpPost("registrar")]
-        public async Task<ActionResult<UsuarioToken>> RegistrarUsuario([FromBody] UsuarioViewModel usuarioVM)
+        public async Task<ActionResult<string>> RegistrarUsuario([FromBody] UsuarioViewModel usuarioVM)
         {
             var result = await _app.RegistrarUsuario(usuarioVM);
 
-            if (result is null)
-                return BadRequest("Dados incorretos");
+            if (result != "Usuário registrado")
+                return BadRequest(result);
 
             return Ok(result);
         }

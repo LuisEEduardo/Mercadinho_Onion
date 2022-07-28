@@ -23,9 +23,9 @@ namespace Mercadinho.Application.App
             _configuration = configuration;
         }
 
-        public async Task<UsuarioToken> Login(UsuarioViewModel usuarioVM)
+        public async Task<UsuarioToken> Login(LoginViewModel usuarioVM)
         {
-            var resultado = await _signInManager.PasswordSignInAsync(usuarioVM.UserName, usuarioVM.Senha, isPersistent: false, lockoutOnFailure: false);
+            var resultado = await _signInManager.PasswordSignInAsync(usuarioVM.Email, usuarioVM.Senha, isPersistent: false, lockoutOnFailure: false);
 
             if (resultado.Succeeded)
                 return GerarToken(usuarioVM);
@@ -33,31 +33,29 @@ namespace Mercadinho.Application.App
                 return null;
         }
 
-        public async Task<UsuarioToken> RegistrarUsuario(UsuarioViewModel usuarioVM)
+        public async Task<string> RegistrarUsuario(UsuarioViewModel usuarioVM)
         {
             var usuario = new IdentityUser
             {
-                UserName = usuarioVM.UserName,
+                UserName = usuarioVM.Email,
                 Email = usuarioVM.Email,
                 EmailConfirmed = true
             };
 
-            var resultado = await _userManager.CreateAsync(usuario);
+            if (usuarioVM.Senha != usuarioVM.ConfimaSenha)
+                return "A senha está diferente da comfirmação de senha";
+
+            var resultado = await _userManager.CreateAsync(usuario, usuarioVM.Senha);
 
             if (!resultado.Succeeded)
-            {
-                return new UsuarioToken
-                {
-                    Mensagem = resultado.Errors.ToString()
-                };
-            }
+                return resultado.Errors.ToString();
 
             await _signInManager.SignInAsync(usuario, false);
 
-            return GerarToken(usuarioVM);
+            return "Usuário registrado";
         }
 
-        private UsuarioToken GerarToken(UsuarioViewModel usuarioVM)
+        private UsuarioToken GerarToken(LoginViewModel usuarioVM)
         {
             if (usuarioVM == null)
                 return null;

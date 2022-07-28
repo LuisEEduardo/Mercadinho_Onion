@@ -5,7 +5,7 @@ namespace Mercadinho.Application.Interface
 {
     public interface IUsuarioAplicacao
     {
-        Task<UsuarioToken> RegistrarUsuario(UsuarioViewModel usuarioVM);
-        Task<UsuarioToken> Login(UsuarioViewModel usuarioVM);
+        Task<string> RegistrarUsuario(UsuarioViewModel usuarioVM);
+        Task<UsuarioToken> Login(LoginViewModel usuarioVM);
     }
 }
